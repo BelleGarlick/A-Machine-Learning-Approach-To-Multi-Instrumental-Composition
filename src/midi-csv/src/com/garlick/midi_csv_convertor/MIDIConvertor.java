@@ -117,7 +117,7 @@ public class MIDIConvertor {
             
             //Check if valid file
             if (filePath.endsWith(".midi") || filePath.endsWith(".mid")) {
-                String output = outDir.getAbsolutePath() + f.getName().split("\\.")[0] + ".csv";
+                String output = outDir.getAbsolutePath() + "/" + f.getName().split("\\.")[0] + ".csv";
                 //Convert and save
                 songMatrix = Convertor.createSongMatrix(filePath, quantisation, minimum, maximum);
                 songMatrix.save(output);
