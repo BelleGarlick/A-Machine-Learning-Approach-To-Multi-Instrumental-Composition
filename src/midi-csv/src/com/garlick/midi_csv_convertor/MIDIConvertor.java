@@ -6,6 +6,7 @@ public class MIDIConvertor {
     
     public static final String MINIMUM_SEMI_TONE = "C0"; //Inclusive
     public static final String MAXIMUM_SEMI_TONE = "G#5"; //Inclusive
+    public static final float DEFAULT_QUANTISATION = 0.25f;
     
     /**
      * Entry point
@@ -14,7 +15,7 @@ public class MIDIConvertor {
      * @throws Exception 
      */
     public static void main(String[] args) throws Exception {
-        //args = new String[]{"output-rejouiss.mid", "output-rejouiss.csv"};
+    	//args = new String[]{"../../out.mid", "../../test.csv", "C2", "C3", "0.25"};
         //args = new String[]{"mid/", "out/"};
         
         if (args.length >= 2) {
@@ -29,7 +30,7 @@ public class MIDIConvertor {
             if (args.length > 2) {minimumSemiTone = args[2];}
             if (args.length > 3) {maximumSemiTone = args[3];}
 
-            float quantisation = 0.5f; 
+            float quantisation = DEFAULT_QUANTISATION; 
             if (args.length > 4){quantisation = Float.parseFloat(args[4]);}
 
 

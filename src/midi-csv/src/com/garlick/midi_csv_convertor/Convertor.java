@@ -34,9 +34,9 @@ public class Convertor {
         
         //Calc the min, max semi tone as integer from input
         int minSemiTone = parseKeyString(minimumSemiToneString);
-        int maxSemiTone = parseKeyString(maximumSemiToneString) + 1; //Make maximum inclusive
+        int maxSemiTone = parseKeyString(maximumSemiToneString); //Make maximum inclusive
         int minimumSemiTone = Math.min(minSemiTone, maxSemiTone);
-        int maximumSemiTone = Math.max(minSemiTone, maxSemiTone);
+        int maximumSemiTone = Math.max(minSemiTone, maxSemiTone) + 1;
         
         //Load midi data
         Sequence sequence = MidiSystem.getSequence(new File(inputFile));
@@ -74,9 +74,10 @@ public class Convertor {
             MidiEvent event = track.get(i);
             outOfBoundsNotes += parseEvent(event, trackMatrix, quantisation);
         }
+        trackMatrix.removeInactiveNotes(quantisation);
         return outOfBoundsNotes;
     }
-    
+    static int test = 0;
     /**
      * Parse a midi event and update the given track matrix 
      * 

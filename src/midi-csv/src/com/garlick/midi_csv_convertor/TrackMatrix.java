@@ -2,6 +2,8 @@ package com.garlick.midi_csv_convertor;
 
 import java.util.ArrayList;
 
+import javax.sound.midi.Track;
+
 public class TrackMatrix {
     
     //Buffer to store known active notes, before notes are turn off
@@ -66,8 +68,22 @@ public class TrackMatrix {
         }
         
         return keyOutOfBounds;
-    }    
-    
+    }  
+
+    /**
+     * If any notes were not correctly disposed in the MIDI file
+     * the notes will be turn of here
+     * 
+     * @param quantisation Quantisation of the song
+     */
+	public void removeInactiveNotes(int quantisation) {
+        for (ActiveNote an : activeNotes){
+        	if (an.startTime < this.trackMatrix[0].length * quantisation) {
+                addNote(an.key, an.startTime, this.trackMatrix[0].length * quantisation, quantisation);
+        	}
+        }
+	}
+
     /**
      * Add a semi-tone to the track matrix
      * 
@@ -88,7 +104,11 @@ public class TrackMatrix {
         if (relativeKey >= 0 && relativeKey < this.maximumSemiTone - this.minimumSemiTone) {
             this.trackMatrix[activeKeyOnPos][startPos] = 1;
             for (int i = startPos; i <= endPos; i++){
-                this.trackMatrix[activeKeyPos][i] = 1;
+            	if (this.trackMatrix[activeKeyPos][i] != 1) {
+                    this.trackMatrix[activeKeyPos][i] = 1;
+            	} else {
+            		i = endPos;
+            	}
             }
             
             return 0;
