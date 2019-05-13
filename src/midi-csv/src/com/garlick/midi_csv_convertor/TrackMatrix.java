@@ -104,11 +104,7 @@ public class TrackMatrix {
         if (relativeKey >= 0 && relativeKey < this.maximumSemiTone - this.minimumSemiTone) {
             this.trackMatrix[activeKeyOnPos][startPos] = 1;
             for (int i = startPos; i <= endPos; i++){
-            	if (this.trackMatrix[activeKeyPos][i] != 1) {
-                    this.trackMatrix[activeKeyPos][i] = 1;
-            	} else {
-            		i = endPos;
-            	}
+                this.trackMatrix[activeKeyPos][i] = 1;
             }
             
             return 0;
