@@ -26,11 +26,11 @@ public class MIDIConvertor {
 
             String minimumSemiTone = MINIMUM_SEMI_TONE;
             String maximumSemiTone = MAXIMUM_SEMI_TONE;
-            if (args.length > 3) {minimumSemiTone = args[2];}
-            if (args.length > 4) {minimumSemiTone = args[3];}
+            if (args.length > 2) {minimumSemiTone = args[2];}
+            if (args.length > 3) {maximumSemiTone = args[3];}
 
             float quantisation = 0.5f; 
-            if (args.length > 5){quantisation = Float.parseFloat(args[4]);}
+            if (args.length > 4){quantisation = Float.parseFloat(args[4]);}
 
 
             //Output to user
