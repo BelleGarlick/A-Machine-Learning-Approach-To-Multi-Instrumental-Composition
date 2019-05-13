@@ -14,6 +14,7 @@ public class MIDIConvertor {
      * @throws Exception 
      */
     public static void main(String[] args) throws Exception {
+        //args = new String[]{"output-rejouiss.mid", "output-rejouiss.csv"};
         //args = new String[]{"mid/", "out/"};
         
         if (args.length >= 2) {
@@ -28,13 +29,13 @@ public class MIDIConvertor {
             if (args.length > 3) {minimumSemiTone = args[2];}
             if (args.length > 4) {minimumSemiTone = args[3];}
 
-            int quantisation = (int)(120 * 0.5f); //Use half beat (60) (120 ticks per beat)
-            if (args.length > 5){quantisation = (int)(120 * Float.parseFloat(args[4]));}
+            float quantisation = 0.5f; 
+            if (args.length > 5){quantisation = Float.parseFloat(args[4]);}
 
 
             //Output to user
-            System.out.println("Converting " + type + ": '"+inputLocation+"'->'"+outputLocation+"'"
-                    + " between semi-tones '"+minimumSemiTone+"'->'"+maximumSemiTone+"'");
+            System.out.println("-- Converting " + type + ": '"+inputLocation+"'->'"+outputLocation+"'"
+                    + " between semi-tones '"+minimumSemiTone+"'->'"+maximumSemiTone+"' --");
 
             //Convert
             switch (type) {
@@ -72,7 +73,7 @@ public class MIDIConvertor {
      */
     private static void parseFile(String inputFile, String outputFile, 
                                 String minimum, String maximum,
-                                int quantisation) throws Exception {
+                                float quantisation) throws Exception {
         
         if (inputFile.endsWith(".midi") || inputFile.endsWith(".mid")) {
             SongMatrix songMatrix = Convertor.createSongMatrix(inputFile, quantisation, minimum, maximum);
@@ -96,7 +97,7 @@ public class MIDIConvertor {
      */
     private static void parseFolder(String inputPath, String outputPath, 
                                 String minimum, String maximum,
-                                int quantisation) throws Exception {
+                                float quantisation) throws Exception {
         
         File inpDir = new File(inputPath);
         File outDir = new File(outputPath);

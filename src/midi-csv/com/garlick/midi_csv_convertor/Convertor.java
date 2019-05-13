@@ -29,7 +29,7 @@ public class Convertor {
      * @return Song Matrix
      * @throws Exception 
      */
-    public static SongMatrix createSongMatrix(String inputFile, int quantisation, String minimumSemiToneString, String maximumSemiToneString) throws Exception{
+    public static SongMatrix createSongMatrix(String inputFile, float inputQuantisation, String minimumSemiToneString, String maximumSemiToneString) throws Exception{
         SongMatrix sm = new SongMatrix();
         
         //Calc the min, max semi tone as integer from input
@@ -40,6 +40,8 @@ public class Convertor {
         
         //Load midi data
         Sequence sequence = MidiSystem.getSequence(new File(inputFile));
+        
+        int quantisation = (int)(sequence.getResolution() * inputQuantisation);
         int trackLength = convertTickToQuantizedBeatUp(getTrackLength(sequence.getTracks()), quantisation);
         
         //Build track data
