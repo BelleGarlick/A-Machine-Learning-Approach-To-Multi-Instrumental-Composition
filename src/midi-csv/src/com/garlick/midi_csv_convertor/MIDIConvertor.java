@@ -15,7 +15,7 @@ public class MIDIConvertor {
      * @throws Exception 
      */
     public static void main(String[] args) throws Exception {
-    	args = new String[]{"../../out.mid", "../../test.csv", "C2", "C3", "0.5"};
+    	//args = new String[]{"../../out.mid", "../../test.csv", "C2", "C3", "0.5"};
         //args = new String[]{"mid/", "out/"};
         
         if (args.length >= 2) {
