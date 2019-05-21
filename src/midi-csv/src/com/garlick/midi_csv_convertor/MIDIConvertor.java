@@ -31,7 +31,7 @@ public class MIDIConvertor {
             if (args.length > 3) {maximumSemiTone = args[3];}
 
             float quantisation = DEFAULT_QUANTISATION; 
-            if (args.length > 4){quantisation = Float.parseFloat(args[4]);}
+            if (args.length > 4){quantisation = 1 / Float.parseFloat(args[4]);}
 
 
             //Output to user
@@ -54,7 +54,7 @@ public class MIDIConvertor {
                     + "*Output File/Output Path (string)\n"
                     + "Minimum Semi-Tone Bound (int)\n"
                     + "Maximum Semi-Tone Bound (int)\n"
-                    + "Quantisation Level (float)\n\n"
+                    + "Quantisation Level (int)\n\n"
                     + "For more information, please see: https://github.com/SamGarlick/A-Machine-Learning-Approach-To-Multi-Instrumental-Composition\n"
                     + "==================");
         }

@@ -19,14 +19,14 @@ public class MIDIConvertor {
      * @throws Exception 
      */
     public static void main(String[] args) throws Exception {
-        args = new String[]{
-            "in/", 
-            "out/", 
-            "4",
-            "C1",
-            "0.5",
-            "70"
-        };
+//        args = new String[]{
+//            "in/", 
+//            "out/", 
+//            "4",
+//            "C1",
+//            "0.5",
+//            "70"
+//        };
         
         //Parse Args
         if (args.length > 3) {
@@ -41,7 +41,7 @@ public class MIDIConvertor {
             if (args.length > 3) {minimumKey = args[3];}
             
             float quantisation = DEFAULT_QUANTISATION;
-            if (args.length > 4) {quantisation = Float.parseFloat(args[4]);}
+            if (args.length > 4) {quantisation = 1 / Float.parseFloat(args[4]);}
             
             int velocity = DEFAULT_VELOCITY;
             if (args.length > 5) {velocity = Integer.parseInt(args[5]);}
@@ -72,7 +72,7 @@ public class MIDIConvertor {
                     + "*Output File/Output Path (string)\n"
                     + "*Tracks Count (int)\n"
                     + "Minimum Semi-Tone Bound (String)\n"
-                    + "Quantisation Level (float)\n"
+                    + "Quantisation Level (int)\n"
                     + "Note Velocity (int)\n\n"
                     + "For more information, please see: https://github.com/SamGarlick/A-Machine-Learning-Approach-To-Multi-Instrumental-Composition\n"
                     + "==================");
